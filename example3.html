@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-5 target">
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script type="text/jsx">
+    var Badge = React.createClass({
+        render: function() {
+           return <button className="btn btn-primary" type="button">
+            {this.props.title} <span className="badge">{this.props.number}</span>
+           </button>
+        }
+    });
+
+    var Thumbnail = React.createClass({
+        render: function() {
+            return   <div className="thumbnail">
+                        <img src={this.props.imageUrl} alt="..." />
+                            <div className="caption">
+                                <h3>{this.props.header}</h3>
+                                <p>{this.props.description}</p>
+                                <p>
+                                    <a href="#" className="btn btn-primary" role="button">Button</a>
+                                    <a href="#" className="btn btn-default" role="button">Button</a>
+                                </p>
+                            </div>
+                        </div>
+
+            }
+    })
+
+    var options = {
+        title: 'Inbox',
+        number: 33,
+        header: 'qFox',
+        description: 'qFox is a JavaScript library for mobile. Unlike established libraries qFox is more of an experiment and learning exercise. This library focuses heavily on Dom Scripting and touches on extending storage to handle JSON.',
+        imageUrl: 'http://gslinn.com/images/titles/qfox.gif'
+    }
+
+    var element = React.createElement(Thumbnail, options);
+
+    React.render(element, document.querySelector('.target'));
+
+</script>
+</html>
