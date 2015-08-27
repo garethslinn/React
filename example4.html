@@ -44,15 +44,38 @@
             }
     });
 
-    var options = {
-        title: 'Inbox',
-        number: 33,
-        header: 'qFox',
-        description: 'qFox is a JavaScript library for mobile. Unlike established libraries qFox is more of an experiment and learning exercise. This library focuses heavily on Dom Scripting and touches on extending storage to handle JSON.',
-        imageUrl: 'http://gslinn.com/images/titles/qfox.gif'
-    }
+    var ThumbnailList = React.createClass({
+        render: function() {
+            var list = this.props.thumbnailData.map(function(thumbnailProps) {
+                return <Thumbnail {...thumbnailProps} />
+            });
 
-    var element = React.createElement(Thumbnail, options);
+            return <div>
+                {list}
+            </div>
+        }
+    });
+
+    var options = {
+        thumbnailData: [
+            {
+            title: 'Messages',
+            number: 33,
+            header: 'John Smith',
+            description: 'Critical thinking is clear, reasoned thinking involving critique. Its details vary amongst those who define it. According to Beyer (1995), critical thinking means making clear, reasoned judgments. During the process of critical thinking, ideas should be reasoned and well thought out/judged.',
+            imageUrl: 'http://gslinn.com/images/titles/qfox.gif'
+            },
+            {
+            title: 'Messages',
+            number: 25,
+            header: 'Mike West',
+            description: 'History (from Greek ἱστορία, historia, meaning "inquiry, knowledge acquired by investigation") is the study of the past, particularly how it relates to humans.',
+            imageUrl: 'http://gslinn.com/images/titles/qfox.gif'
+            },
+        ]
+    };
+
+    var element = React.createElement(ThumbnailList, options);
 
     React.render(element, document.querySelector('.target'));
 
